@@ -1,0 +1,20 @@
+name: deploy-auth-serv
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "auth/**"
+
+jobs:
+  build:
+    runs-on: ubuntu@latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: create image
+
+      - name: push image
+
+      - name: redeploy pod & service on cloud
