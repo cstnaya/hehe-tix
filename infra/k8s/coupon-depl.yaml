@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coupon-depl
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: coupon
+
+  template:
+    metadata:
+      labels:
+        app: coupon
+    spec:
+      containers:
+        - name: coupon-depl
+          image: luluo/hehe-tix-coupon
+          env:
+            - name: MONGO_URI
+              value: "mongodb://coupon-mongo-serv:27017/coupon"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coupon-serv
+
+spec:
+  selector:
+    app: coupon
+  ports:
+    - name: coupon
+      protocol: TCP
+      port: 8001
+      targetPort: 8001

@@ -17,3 +17,10 @@ spec:
                 name: auth-serv
                 port:
                   number: 8000
+          - path: /api/coupons/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: coupon-serv
+                port:
+                  number: 8001
