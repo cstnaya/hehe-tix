@@ -1,0 +1,17 @@
+name: test-coupon-serv
+
+on:
+  pull_request:
+    paths:
+      - "coupon/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
+      - name: test
+        run: cd coupon && npm install && npm run test:ci
